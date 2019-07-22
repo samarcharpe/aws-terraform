@@ -19,6 +19,12 @@ variable "vpc_cidr" {
   description = "The region to install the resources"
 }
 
+# The ssh keypair
+variable "ssh_keypair" {
+  default = "samar-ap-south-keypair"
+  description = "This ssh keypair will be used to connect to your instance"
+}
+
 
 
 #create vpc with required specs
@@ -241,7 +247,7 @@ resource "aws_instance" "samar_rhel_web" {
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.samar-subnet-terraform-public-a.id}"
   vpc_security_group_ids = ["${aws_security_group.samar_sg_80.id}" , "${aws_security_group.samar_sg_22.id}"  , "${aws_security_group.samar_sg_443.id}"]
-  key_name = "samar-ap-south-keypair"
+  key_name = "${var.ssh_keypair}"
   associate_public_ip_address = true
   tags = {
     Name = "samar_rhel_web"
