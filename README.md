@@ -14,6 +14,8 @@ This code will create following resources in AWS Mumbai region
 
 VPC with metioned CIDR
 3 public and 3 private subnets with mentioned range
+interet gateway
+route tables
 security groups for ssh/http/https access
 RHEL instance with AMI mentioned
 
